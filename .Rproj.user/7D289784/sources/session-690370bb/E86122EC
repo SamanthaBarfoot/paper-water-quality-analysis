@@ -1,0 +1,27 @@
+{
+    "id": "E86122EC",
+    "path": "~/Desktop/INF312/INF312 R Projects/paper-water-quality-analysis/scripts/02-data_cleaning.R",
+    "project_path": "scripts/02-data_cleaning.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1705545168350.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "12,20",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1705603808,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1705603808404,
+    "read_only": false,
+    "read_only_alternatives": []
+}
