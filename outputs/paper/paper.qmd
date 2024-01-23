@@ -1,25 +1,109 @@
 ---
-title: "paper"
-format: html
+title: "Analysis of Toronto’s Beaches Water Quality From 2007 to 2023"
+format: pdf
 ---
 
-## Quarto
+# Abstract
+Enter abstract here
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+## 1 Introduction
 
-## Running Code
+Between June and September of each year, the City of Toronto samples the city’s beaches to test for bacteria such as E. coli. High levels of this bacteria can cause adverse health risks which can result in illnesses such as strokes, kidney failure or seizures (Canada, 2017). Therefore, the City of Toronto performs daily testing to ensure that E.Coli levels do not exceed more than 100 Colony Forming Units per 100ml of water (News ·, 2021). If E.coli levels exceed this level then the beach is deemed unsafe and discourages people from swimming. E.coli levels are the result of various environmental factors such as heavy rain, birds, strong wind and waves. Bacteria levels are also often affected by storms (News ·, 2021). 
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+Therefore, it is important to regularly monitor bacteria levels of the water at the Toronto beaches. Additionally, it is important to examine the trends related to this water contamination. This paper explores how contamination and E.coli levels change throughout the open beach season and how it impacts when beaches are open or closed. 
 
-```{r}
-1 + 1
-```
+This was done by examining the frequency of open beach days between 2007 and 2023. Specifically comparing how often beaches were open on the same day of the season between different years. It also compared the E.coli levels on the same day of the season over the years.
 
-You can add options to executable code like this 
+## 2 Data
+
+### Sunnyside Beaches (eColi)
 
 ```{r}
 #| echo: false
-2 * 2
+#| warning: false
+
+library(tidyverse)
+#### Read in the data ####
+sunnyside <-
+  read_csv(
+    file = "../data/sunnyside.csv",
+    show_col_types = FALSE
+  )
+
+sunnyside |>
+  ggplot(aes(x = day, y = eColi)) +
+  ylim(0.1,1000) +
+  geom_hline(aes(yintercept = 100, color = "red"))+
+  geom_point() +
+  theme_minimal() +
+  labs(x = "Day of the season", y = "eColi levels") 
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+### Marie Curtis Beaches (eColi)
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+#### Read in the data ####
+marieCurtis <-
+  read_csv(
+    file = "../data/marieCurtis.csv",
+    show_col_types = FALSE
+  )
+
+marieCurtis |>
+  ggplot(aes(x = day, y = eColi)) +
+  ylim(0.1,600) +
+  geom_hline(aes(yintercept = 100, color = "red"))+
+  geom_point() +
+  theme_minimal() + 
+  labs(x = "Day of the season", y = "eColi levels") 
+```
+
+### Sunnyside Beaches (safe swimming days)
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+#### Read in the data ####
+sunnyside <-
+  read_csv(
+    file = "../data/sunnyside.csv",
+    show_col_types = FALSE
+  )
+
+sunnyside |>
+  ggplot(aes(x = day, y = yearsSafe/(yearsSafe + yearsUnSafe))) +
+  geom_line() +
+  theme_minimal() + 
+  labs(x = "Day of the season", y = "Frequency of safe eColi levels") 
+```
+
+### Marie Curtis Beaches (safe swimming days)
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+#### Read in the data ####
+marieCurtis <-
+  read_csv(
+    file = "../data/marieCurtis.csv",
+    show_col_types = FALSE
+  )
+
+marieCurtis |>
+  ggplot(aes(x = day, y = yearsSafe/(yearsSafe + yearsUnSafe))) +
+  geom_line() +
+  theme_minimal() + 
+  labs(x = "Day of the season", y = "Frequency of safe eColi levels") 
+```
+
+## 3 Discussion
+
+## 4 References
