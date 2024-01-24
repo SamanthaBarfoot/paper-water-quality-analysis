@@ -4,7 +4,6 @@
 # Date: 18 January 2024 
 # Contact: samantha.barfoot@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
 
 
 #### Workspace setup ####

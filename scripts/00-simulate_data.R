@@ -1,21 +1,22 @@
 #### Preamble ####
-# Purpose: Simulates water quality throughout summer
+# Purpose: Simulates water quality throughout summer (May-September) through seperate datasets for each beach
 # Author: Samantha Barfoot 
 # Date: 17 January 2024
 # Contact: samantha.barfoot@mail.utoronto.ca 
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
 
 
 #### Workspace setup ####
 #install.packages("tidyverse")
 #install.packages("janitor")
+
 #### Workspace setup ####
 library(tidyverse)
 library(janitor)
 
 
 #### Simulate data ####
+set.seed(1)
 for(fileName in c("sunnyside.csv","marieCurtis.csv")){
   simulated_data <-
     tibble(

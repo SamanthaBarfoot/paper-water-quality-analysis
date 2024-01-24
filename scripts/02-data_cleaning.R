@@ -1,21 +1,20 @@
 #### Preamble ####
-# Purpose: Cleans the raw plane data recorded by two observers..... [...UPDATE THIS...]
+# Purpose: Cleans the raw data recorded by City of Toronto at the Sunnyside and mMrie Curtis beaches.
 # Author: Samantha Barfoot 
 # Date: 18 January 2024 
 # Contact: samantha.barfoot@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
 
 #### Workspace setup ####
 library(tidyverse)
 library(MASS)
 
-#### FUNCTIONS ####
+#### Functions ####
 convert_date <- function(date){
   month <- strtoi(substr(date,6,7), base = 10)
   day <- strtoi(substr(date,9,10), base = 10)
   
-  
+  #calculates the day in the sample collection season 
   if(month == 5){
     day_in_study <- day
   }
