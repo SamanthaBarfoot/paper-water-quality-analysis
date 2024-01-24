@@ -2,7 +2,7 @@
 No LLMs were used in this analysis and project.
 
 ## Abstract
-During the summer months, the Toronto beaches are frequent destinations too cool off in the hot weather. However, there is yearly issue of water contamination from bacteria such as E. coli that puts the city's residents health at risk. Using data obtained by the City of Torontos Open Data Catalogue, this paper examines the E. coli trends at the Sunnyside and Marie Curtis beaches between 2007 and 2023. Additionally, it explores the implications and causes of this health and safety issue. 
+During the summer months, the Toronto beaches are popular destinations to cool off at the hot weather. However, there is yearly issue of water contamination from bacteria such as E. coli, which puts the city's residents at risk. Using data obtained by the City of Toronto's Open Data Catalogue, this paper examines the E. coli trends at the Sunnyside and Marie Curtis beaches between 2007 and 2023. Additionally, it explores the implications and causes of this health and safety issue, revealing that the number of unsafe swimming days throughout the summer is hugely impacted. 
 
 ## File Structure
 
