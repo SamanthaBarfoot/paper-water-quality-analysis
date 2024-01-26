@@ -1,45 +1,45 @@
 ---
-title: "Analysis of Toronto’s Beaches Water Quality From 2007 to 2023"
+title: "Analysis of the Water Quality of Toronto's Beaches from 2007 to 2023"
 author: "Samantha Barfoot"
 thanks: "Code and data are available at: https://github.com/SamanthaBarfoot/paper-water-quality-analysis.git"
 date: today
 date-format: long
 abstract: > 
-  During the summer months, the Toronto beaches are popular destinations to cool off at the hot weather. However, there is yearly issue of water contamination from bacteria such as E. coli, which puts the city's residents at risk. Using data obtained by the City of Toronto's Open Data Catalogue, this paper examines the E. coli trends at the Sunnyside and Marie Curtis beaches between 2007 and 2023. Additionally, it explores the implications and causes of this health and safety issue, revealing that the number of unsafe swimming days throughout the summer is hugely impacted. 
+  During the summer months, the Toronto beaches are popular destinations to cool off at from the hot weather. However, there is yearly issue of water contamination from bacteria such as E. coli, putting the City of Toronto's residents at risk. Using data obtained by the City of Toronto's Open Data Catalogue, this paper examines the E. coli trends at the Sunnyside and Marie Curtis beaches between 2007 and 2023. Additionally, it explores the implications and causes of this health and safety issue, revealing that the number of unsafe swimming days throughout the summer is greatly impacted. 
 bibliography: references.bib
 number-sections: true
 format: pdf
 ---
 # Introduction
-Between June and September of each year, the City of Toronto samples the city’s beaches to test for bacteria such as E. coli. High levels of these bacteria can cause adverse health risks, which can result in illnesses such as strokes, kidney failure, or seizures [@publichealthRef]. Therefore, the City of Toronto performs daily testing to ensure that E. coli levels do not exceed more than 100 Colony Forming Units (CFU) per 100ml of water [@na_toronto_2021]. If E. coli levels exceed this level, then the beach is deemed unsafe, and people are discouraged from swimming. E. coli levels depend on various environmental factors such as heavy rain, birds, strong wind, and waves. @fig-map shows the locations of several sources of water runoff that can carry E. coli into Lake Ontario; for example, in Combined Sewer Overflows (CSO), heavy rainfall mixes with raw sewage and overflows into the lake [@na_toronto_2021].   
+Between June and September of each year, the City of Toronto samples the city’s beaches to test for bacterias such as E. coli. High levels of these bacteria can cause adverse health complications, which can result in illnesses such as strokes, kidney failure, or seizures [@publichealthRef]. Therefore, the City of Toronto performs daily testing to ensure that E. coli levels do not exceed more than 100 Colony Forming Units (CFU) per 100ml of water [@na_toronto_2021]. If E. coli levels exceed this level, then the beach is deemed unsafe, and people are discouraged from swimming [@city_of_toronto_why_2017]. E. coli levels depend on various environmental factors such as heavy rain, birds, strong wind, and waves [@na_toronto_2021]. @fig-map shows the locations of several sources of water runoff that can carry E. coli into Lake Ontario; for example, in Combined Sewer Overflows (CSO), heavy rainfall mixes with raw sewage and overflows into the lake [@na_toronto_2021].   
 
-Therefore, it is important to regularly monitor the bacteria levels of the water at the Toronto beaches. Additionally, it is important to examine the trends related to this water contamination. This paper explores how contamination and E. coli levels change throughout the open beach season and how it impacts when beaches are open or closed. This was done by examining the frequency of open beach days between 2007 and 2023. Specifically, we compare how often beaches were open on the same day of the season (aggregated over all the sampling years). We also compared the E. coli levels on the same day of the season (aggregated over the sampling years). It was found that E. coli levels at the Sunnyside and Marie Curtis beaches (see @fig-map for locations) increase greatly throughout the summer season, resulting in unsafe contamination levels. This is important because once E. coli levels exceed the threshold, they are considered unsafe to swim. E. coli-contaminated water can cause adverse health risks, putting the city’s residents in danger. As the summer season progresses, temperatures rise but with high E. coli levels, people in the city cannot always safely use the beaches to cool off [@noauthor_4_2023].
+Therefore, it is important to regularly monitor the bacteria levels of the water at the Toronto beaches. Additionally, it is important to examine the trends related to this water contamination. This paper explores how contamination and E. coli levels change throughout the open beach season and how it impacts when beaches are open or closed. This was measured by examining the frequency of open beach days between 2007 and 2023. Specifically, we compare how often beaches were open on the same day of the season (aggregated over all sampling years). We also compared the E. coli levels on the same day of the season (aggregated over sampling years). It was found that E. coli levels at the Sunnyside and Marie Curtis beaches (see @fig-map for locations) increase greatly throughout the summer season, resulting in unsafe contamination levels. This is important because once E. coli levels exceed the threshold, they are considered unsafe to swim. E. coli-contaminated water can cause adverse health risks, putting the city’s residents in danger. As the summer season progresses, temperatures rise but with high E. coli levels, people in the city cannot always safely use the beaches to cool off [@noauthor_4_2023].
 
 ![Map of Toronto waterfront with Sunnyside and Marie Curtis beaches indicated. Additionally, sources of water runoff are shown (image credit: swimdrinkfish.ca)](map.pdf){#fig-map}
 
 @sec-data of this paper covers the broader context of the Toronto Beaches Water Quality dataset, examines the variables used, and high-level aspects of the data cleaning. It also discusses observations made from the dataset, trends, and compares the two beaches, Sunnyside and Marie Curtis. @sec-discussion of this paper further explores the observations made in @sec-data about the Toronto Beaches Water Quality dataset and the implications and causes of these trends.
 
-The graphs in this paper were created in R Studio with R as well as the analysis [@citeR]. To conduct the analysis tidyverse [@tidyverseRef], janitor [@janitorRef], opendatatoronto [@openRef], MASS [@massRef], tibble  [@tibbleRef], readr [@readRef], dplyr [@dplRef] packages were all used. To create all the figures ggplot2 [@ggplotRef] was used.
+The graphs in this paper were created in R Studio with R as well as the analysis [@citeR]. To conduct the analysis `tidyverse` [@tidyverseRef], `janitor` [@janitorRef], `opendatatoronto` [@openRef], `MASS` [@massRef], `tibble`  [@tibbleRef], `readr` [@readRef], `dplyr` [@dplRef] packages were all used. To create all graphical figures `ggplot2` [@ggplotRef] was used.
 
 # Data {#sec-data}
-The dataset used in this report, Toronto Beaches Water Quality, was obtained from the City of Toronto’s Open Data Catalogue. The data were last refreshed on the 11th of September 2023 and the full dataset is published by Toronto Public Health. The data were collected from two beaches, Sunnyside Beach and Marie Curtis Beach, and several sub-locations along each beach. The data span 16 years (2007 and 2023) between May and September. The data were collected by the Parks, Forestry, & Recreation Department through the Beach Water Sampling Program to reduce water-borne related illness incidents in the city [@city_of_toronto_toronto_2023].  
+The dataset used in this report, Toronto Beaches Water Quality, was obtained from the City of Toronto’s Open Data Catalogue [@city_of_toronto_toronto_2023]. The data were last refreshed on the 11th of September 2023 and the full dataset is published by Toronto Public Health. The data were collected from two beaches, Sunnyside Beach and Marie Curtis Beach, and several sub-locations along both beaches. The data spans 16 years (2007 and 2023) between May and September. The data were collected by the Parks, Forestry, & Recreation Department through the Beach Water Sampling Program to reduce water-borne related illness incidents in the city [@city_of_toronto_toronto_2023].  
 
 The dataset analyzed in this paper contained 20,526 entries across eight variables used to describe the water samples. This included entry number, beach ID, beach name, beach site name, collection date, E. coli level, comments, and GPS coordinates. To better understand this information, data cleaning was performed to focus on three main variables: day within the sample collection season (May 1st to September 30th), E. coli levels, and number of days the beach was open. Instead of analyzing all 20,526 separate dataset entries, the individual days of the collection season, 153 in total, were examined in aggregate over the 16 years. From this, the E. coli levels were averaged for each day of the season. E. coli levels are represented in CFUs. The variables of safe and unsafe swimming days were created by comparing the E. coli levels to the safe swimming threshold of 100 CFU per 100ml of water [@noauthor_4_2023]. If the E. coli levels exceeded this threshold, the beach would be considered unsafe to swim. Data cleaning also involved separating the data into two different datasets: one for Sunnyside Beach and one for Marie Curtis Beach as they are in very different areas and have their own particular trends. At each beach there were multiple different sample sites, and we aggregated these sites and their data. Additionally, it involved the cleaning of certain bad data points that exceeded any realistic values.   
 
 ## Sunnyside Beaches
-Examining the cleaned Sunnyside beach dataset, several observations can be made. First, on average, there are relatively few days in the season where swimming is considered safe as the E. coli safety threshold is often crossed  (see @fig-sunnysideEcoli). The highest average E. coli level recorded was on the 70th day of the season at 962.88 CFU per 100ml. The lowest, value was on the 20th day of the season at 10 CFU per 100ml. Second, the E. coli levels have a moderate, positive, linear relationship (see @fig-sunnysideEcoli). As the season progresses, the E. coli levels tend to increase. Therefore, we can also see that as the day of the season increases, the frequency of safe E. coli levels decreases and thus there are fewer safe swimming days (see @fig-sunnysideFreq). This can be seen in a negative, linear relationship (see @fig-sunnysideFreq).
+Examining the cleaned Sunnyside beach dataset, several observations can be made. First, on average, there are relatively few days in the season where swimming is considered safe as the E. coli safety threshold is often crossed  (see @fig-sunnysideEcoli). The highest average E. coli level recorded was on the 70th day of the season at 962.88 CFU per 100ml. The lowest value was on the 20th day of the season at 10 CFU per 100ml. Second, the E. coli levels have a moderate, positive, linear relationship (see @fig-sunnysideEcoli). As the season progresses, the E. coli levels tend to increase. Therefore, we can also see that as the day of the season increases, the frequency of safe E. coli levels decreases and thus there are fewer safe swimming days (see @fig-sunnysideFreq). This can be seen in a negative, linear relationship (see @fig-sunnysideFreq).
 
 ```{r}
 #| echo: false
 #| warning: false
 #| label: fig-sunnysideEcoli
-#| fig-cap: "E. coli levels in CFU over the sampeling season. The safe E. coli level threshold is also shown (red) as well as the line of best fit (blue)."
+#| fig-cap: "E. coli levels in CFU over the sampeling season at Sunnyside beach. The safe E. coli level threshold is also shown (red) as well as the line of best fit (blue)."
 #| fig.height: 2.5
 #| fig.pos: "H"
 
 library(tidyverse)
 
-#### Read in the data ####
+#### Read in the sunnyside data ####
 sunnyside <-
   read_csv(
     file = "../data/sunnyside.csv",
@@ -48,6 +48,7 @@ sunnyside <-
 
 cutoff <- data.frame(yintercept=100, eColi='safety threshold (100)')
 
+#create scatterplot
 sunnyside |>
   ggplot(aes(x = day, y = eColi)) +
   ylim(0.1,1000) +
@@ -62,18 +63,11 @@ sunnyside |>
 #| echo: false
 #| warning: false
 #| label: fig-sunnysideFreq
-#| fig-cap: "Frequency of safe E. coli levels over the sampeling season. The frequency indicates how often the given beach is considered open and safe to use. Blue is the line fo best fit."
+#| fig-cap: "Frequency of safe E. coli levels over the sampeling season at Sunnyside beach. The frequency indicates how often the given beach is considered open and safe to use. Blue is the line fo best fit."
 #| fig.height: 2.5
 #| fig.pos: "H"
 
-library(tidyverse)
-#### Read in the data ####
-sunnyside <-
-  read_csv(
-    file = "../data/sunnyside.csv",
-    show_col_types = FALSE
-  )
-
+#create scatterplot
 sunnyside |>
   ggplot(aes(x = day, y = yearsSafe/(yearsSafe + yearsUnSafe))) +
   geom_point() +
@@ -89,12 +83,11 @@ Similar observations can be made about the Marie Curtis dataset. As the collecti
 #| echo: false
 #| warning: false
 #| label: fig-marieCurtisEcoli
-#| fig-cap: "E. coli levels in CFU over the sampeling season. The safe E. coli level threshold is also shown (red) as well as a line of best fit (blue)."
+#| fig-cap: "E. coli levels in CFU over the sampeling season at Marie Curtis beach. The safe E. coli level threshold is also shown (red) as well as a line of best fit (blue)."
 #| fig.height: 2.4
 #| fig.pos: "H"
 
-library(tidyverse)
-#### Read in the data ####
+#### Read in the Marie Curtis data ####
 marieCurtis <-
   read_csv(
     file = "../data/marieCurtis.csv",
@@ -103,6 +96,7 @@ marieCurtis <-
 
 cutoff <- data.frame(yintercept=100, eColi='safety threshold (100)')
 
+#create scatterplot
 marieCurtis |>
   ggplot(aes(x = day, y = eColi)) +
   ylim(0.1,600) +
@@ -117,18 +111,11 @@ marieCurtis |>
 #| echo: false
 #| warning: false
 #| label: fig-marieCurtisFreq
-#| fig-cap: "Frequency of safe E. coli levels over the sampeling season. The frequency indicates how often the given beach is considered open and safe to use. Blue is a line of best fit."
+#| fig-cap: "Frequency of safe E. coli levels over the sampeling season at Marie Curtis beach. The frequency indicates how often the given beach is considered open and safe to use. Blue is a line of best fit."
 #| fig.height: 2.5
 #| fig.pos: "H"
 
-library(tidyverse)
-#### Read in the data ####
-marieCurtis <-
-  read_csv(
-    file = "../data/marieCurtis.csv",
-    show_col_types = FALSE
-  )
-
+#create scatterplot
 marieCurtis |>
   ggplot(aes(x = day, y = yearsSafe/(yearsSafe + yearsUnSafe))) +
   geom_point() +
@@ -137,13 +124,13 @@ marieCurtis |>
   labs(x = "Day of the season", y = "Frequency of safe E. coli levels") 
 ```
 
-Comparing the Marie Curtis and Sunnyside beach data we can see that there are some differences. One of these is that the majority of the E. coli levels at the Sunnyside beach are below or around 250 CFU (see @fig-sunnysideEcoli) Whereas the Marie Curtis beach levels are more spread out. It appears that most of the Marie Curtis E. coli levels are below 400 CFU (see @fig-marieCurtisEcoli). Therefore, Marie Curtis Beach tends to have high E. coli levels. However, both beaches have similar spreads of data when looking at the frequency of safe beach days. The majority of the data points fit between 0.4 and 1.0 for both beaches (see @fig-sunnysideFreq and @fig-marieCurtisFreq).
+Comparing the Marie Curtis and Sunnyside beach data we can see that there are some differences. One of these is that the majority of the E. coli levels at the Sunnyside beach are below or around 250 CFU (see @fig-sunnysideEcoli). Whereas the Marie Curtis beach levels are more spread out. It appears that most of the Marie Curtis E. coli levels are below 400 CFU (see @fig-marieCurtisEcoli). Therefore, Marie Curtis Beach tends to have high E. coli levels. However, both beaches have similar spreads of data when looking at the frequency of safe beach days. The majority of the data points fit between 0.4 and 1.0 for both beaches (see @fig-sunnysideFreq and @fig-marieCurtisFreq).
 
 # Discussion {#sec-discussion}
-The reason for this decline in safe beach days and the rise of E. coli levels throughout the summer could be due to a variety of different reasons. E. coli and other bacteria levels tend to increase after storms and heavy rainfall, which often occur during the spring and summer seasons which overlap with the collection season. Storms and heavy rainfall result in stormwater runoff as precipitation washes over land, carrying bacteria downstream to other tributaries such as Lake Ontario. It picks up substances such as animal and bird waste, garbage, chemicals, and other pollutants that make their way to the Toronto beaches [@city_of_toronto_why_2017]. Additionally, heavy rainfall can cause sewage pipes to overflow and enter the stormwater runoff as the underground sewage and stormwater share the same sewer and pipelines [@city_of_toronto_why_2017]. Therefore, heavy rainfall and storms can cause E. coli pollution at Toronto’s beaches as it can be contained in stormwater runoff [@mittelstaedt_worse_2004]. Which, even if located far away from the waterfront, can still make its way though the different tributaries and into Lake Ontario and along Toronto's beaches.
+The reason for this decline in safe beach days and the rise of E. coli levels throughout the summer could be due to a variety of different reasons. E. coli and other bacteria levels tend to increase after storms and heavy rainfall, which often occur during the spring and summer seasons, thus overlapping with the collection season. Storms and heavy rainfall result in stormwater runoff as precipitation washes over land, carrying bacteria downstream to other tributaries such as Lake Ontario. It picks up substances such as animal and bird waste, garbage, chemicals, and other pollutants that make their way to the Toronto beaches [@city_of_toronto_why_2017]. Additionally, heavy rainfall can cause sewage pipes to overflow and enter the stormwater runoff as the underground sewage and stormwater share the same sewer and pipelines [@city_of_toronto_why_2017]. Therefore, heavy rainfall and storms can cause E. coli pollution at Toronto’s beaches as it can be contained in stormwater runoff [@mittelstaedt_worse_2004]. Which, even if located far away from the waterfront, can still make its way though the different tributaries, into Lake Ontario and along Toronto's beaches.
 
-While the Sunnyside and Marie Curtis beaches were the only two included in this dataset, the observation that there are more often than not unsafe contamination levels at these two very different locations is very important with regards to the rest of the Toronto shoreline. If these two beaches, almost 11km apart, both have high E. coli levels then what about the rest of Toronto’s waterfront? Looking at @fig-map, many runoff points are actually far away from the analyzed beaches. While other Toronto beaches are also monitored for E. coli levels, people use more than just those designated beaches for recreational use. While it is only recommended that people swim inside designated swim areas [@city_of_toronto_beaches_2017] people nonetheless use areas such as the city’s inner harbour for activities such as kayaking and sailing. Areas such as the Toronto Harbour Front are not monitored for E. coli [@cribb_dirty_2017]. This puts recreational users of these areas at risk for E. coli infection and other health risks. While not directly swimming, if someone falls into the water or practices flipping they are put in an unsafe position [@cribb_dirty_2017].
+While the Sunnyside and Marie Curtis beaches were the only two included in this dataset, the observation that unsafe contamination levels are a regular occurence at at these two very different locations is very important with regards to the rest of the Toronto shoreline. If these two beaches, almost 11km apart, both have high E. coli levels then what about the rest of Toronto’s waterfront? Looking at @fig-map, many runoff points are actually far away from the analyzed beaches. While other Toronto beaches are also monitored for E. coli levels, people use more than just those designated beaches for recreational use. While it is only recommended that people swim inside designated swim areas [@city_of_toronto_beaches_2017] people nonetheless use areas such as the city’s inner harbour for activities such as kayaking and sailing. Areas such as the Toronto Harbour Front are not monitored for E. coli [@cribb_dirty_2017], which puts recreational users of these areas at risk for E. coli infection and other health risks. While not directly swimming, if someone falls into the water or practices flipping they are put in an unsafe position [@cribb_dirty_2017].
 
-Therefore, this brings up the question of how much of Toronto’s shoreline should be tested for bacteria contamination. Additionally, does more need to be done to prevent this contamination in the first place, and what can be done? Runoff from the sewage pipes that mix with the stormwater in the sewers appears to play a big role in contamination [@mittelstaedt_worse_2004]. However, it would be an expensive, and time-consuming endeavor to rework this system. In the meantime, we must look for smaller solutions. If prevention is not achievable then perhaps awareness of the dangers of recreational use in non-tested areas, especially after heavy rainfall could be emphasized.
+This brings up the question of how much of Toronto’s shoreline should be tested for bacteria contamination. Additionally, does more need to be done to prevent this contamination in the first place, what can be done, and who has the power to make these changes? Runoff from the sewage pipes that mix with the stormwater in the sewers appears to play a big role in contamination [@mittelstaedt_worse_2004]. However, it would be an expensive and time-consuming endeavor to rework this system. In the meantime, we must look for smaller solutions. If prevention is not achievable then perhaps awareness of the dangers of recreational use in non-tested areas, especially after heavy rainfall could be emphasized.
 
 # References
